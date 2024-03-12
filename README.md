@@ -1,5 +1,8 @@
 # DashMap
-Undergraduate thesis on refining, converting, and stitching together DepthAnything outputs into a point cloud
+My undergraduate honours thesis on leveraging temporal information to refine DepthAnything outputs using a CNN, converting the depth maps into point clouds, and registering them to reconstruct the scene.
+
+Primary work cited:
+(*note: not all files from this repo are included, only what is required for my application to work.*)
 
 <div align="center">
 <h2>Depth Anything: Unleashing the Power of Large-Scale Unlabeled Data</h2>
@@ -18,21 +21,7 @@ Undergraduate thesis on refining, converting, and stitching together DepthAnythi
 
 This work presents Depth Anything, a highly practical solution for robust monocular depth estimation by training on a combination of 1.5M labeled images and **62M+ unlabeled images**.
 
-![teaser](assets/teaser.png)
-
-## News
-
-* **2024-02-05:** [Depth Anything Gallery](./gallery.md) is released. Thank all the users!
-* **2024-02-02:** Depth Anything serves as the default depth processor for [InstantID](https://github.com/InstantID/InstantID) and [InvokeAI](https://github.com/invoke-ai/InvokeAI/releases/tag/v3.6.1).
-* **2024-01-25:** Support [video depth visualization](./run_video.py). An [online demo for video](https://huggingface.co/spaces/JohanDL/Depth-Anything-Video) is also available.
-* **2024-01-23:** The new ControlNet based on Depth Anything is integrated into [ControlNet WebUI](https://github.com/Mikubill/sd-webui-controlnet) and [ComfyUI's ControlNet](https://github.com/Fannovel16/comfyui_controlnet_aux).
-* **2024-01-23:** Depth Anything [ONNX](https://github.com/fabio-sim/Depth-Anything-ONNX) and [TensorRT](https://github.com/spacewalk01/depth-anything-tensorrt) versions are supported.
-* **2024-01-22:** Paper, project page, code, models, and demo ([HuggingFace](https://huggingface.co/spaces/LiheYoung/Depth-Anything), [OpenXLab](https://openxlab.org.cn/apps/detail/yyfan/depth_anything)) are released.
-
-
 ## Features of Depth Anything
-
-***If you need other features, please first check [existing community supports](#community-support).***
 
 - **Relative depth estimation**:
     
@@ -209,43 +198,3 @@ pipe = pipeline(task="depth-estimation", model="LiheYoung/depth-anything-small-h
 depth = pipe(image)["depth"]
 ```
 </details>
-
-## Community Support
-
-**We sincerely appreciate all the extentions built on our Depth Anything from the community. Thank you a lot!**
-
-Here we list the extensions we have found:
-- Depth Anything TensorRT: 
-    - https://github.com/spacewalk01/depth-anything-tensorrt
-    - https://github.com/thinvy/DepthAnythingTensorrtDeploy
-    - https://github.com/daniel89710/trt-depth-anything
-- Depth Anything ONNX: https://github.com/fabio-sim/Depth-Anything-ONNX
-- Depth Anything in Transformers.js (3D visualization): https://huggingface.co/spaces/Xenova/depth-anything-web
-- Depth Anything for video (online demo): https://huggingface.co/spaces/JohanDL/Depth-Anything-Video
-- Depth Anything in ControlNet WebUI: https://github.com/Mikubill/sd-webui-controlnet
-- Depth Anything in ComfyUI's ControlNet: https://github.com/Fannovel16/comfyui_controlnet_aux
-- Depth Anything in X-AnyLabeling: https://github.com/CVHub520/X-AnyLabeling
-- Depth Anything in OpenXLab: https://openxlab.org.cn/apps/detail/yyfan/depth_anything
-- Depth Anything in OpenVINO: https://github.com/openvinotoolkit/openvino_notebooks/tree/main/notebooks/280-depth-anything
-
-If you have your amazing projects supporting or improving (*e.g.*, speed) Depth Anything, please feel free to drop an issue. We will add them here.
-
-
-## Acknowledgement
-
-We would like to express our deepest gratitude to [AK(@_akhaliq)](https://twitter.com/_akhaliq) and the awesome HuggingFace team ([@niels](https://huggingface.co/nielsr), [@hysts](https://huggingface.co/hysts), and [@yuvraj](https://huggingface.co/ysharma)) for helping improve the online demo and build the HF models.
-
-Besides, we thank the [MagicEdit](https://magic-edit.github.io/) team for providing some video examples for video depth estimation, and [Tiancheng Shen](https://scholar.google.com/citations?user=iRY1YVoAAAAJ) for evaluating the depth maps with MagicEdit.
-
-## Citation
-
-If you find this project useful, please consider citing:
-
-```bibtex
-@article{depthanything,
-      title={Depth Anything: Unleashing the Power of Large-Scale Unlabeled Data}, 
-      author={Yang, Lihe and Kang, Bingyi and Huang, Zilong and Xu, Xiaogang and Feng, Jiashi and Zhao, Hengshuang},
-      journal={arXiv:2401.10891},
-      year={2024}
-}
-```
