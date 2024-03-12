@@ -20,3 +20,6 @@ venv.bak/
 assets/
 inputvideo/
 output/
+metric_depth/data/
+*.pt
+*.pth
