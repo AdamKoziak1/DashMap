@@ -1,7 +1,21 @@
 # DashMap
-My undergraduate honours thesis on leveraging temporal information to refine DepthAnything outputs using a CNN, converting the depth maps into point clouds, and registering them to reconstruct the scene.
+DashMap is an application of my undergraduate honours thesis on leveraging temporal information to refine DepthAnything outputs. For my use case I'm focusing on dashcams, but it could be applied to any video for 3D reconstruction. I stack together consecutive depth maps produced by DepthAnything over the course of a video, train a CNN to improve the output accuracy using temporal information and provide an estimated ego-motion transformation, then convert to a point cloud and transform and register them to reconstruct the scene over time. It's a work in progress, the intention is to eventually use temporal transformers instead of a CNN, hopefully yielding longer context alongside more dynamic and meaningful feature extraction from said context thanks to temporal attention. In the long term, a conversion to a full spatiotemporal transformer would be ideal, but one step at a time.
+ 
+## Setup
+I'd recommend following the instructions on the base DepthAnything Github, but here are some notes for my version:
+
+
+metric_depth/checkpoints must contain depth_anything_metric_depth_outdoor.pt in order to benefit from the baseline DepthAnything performance.
+
+
+metric_depth/train_test_inputs contains text files with relative paths for all images ground truth depth maps, and focal lengths for training or evaluation. Note that the original files provided had some mismatches and gaps, so I included the generate_full_kitti_list.py script to automatically generate them from whatever subset of kitti you have downloaded. This will also fill in gaps in the test list, which originally skipped many frames. For my application, I need consecutive frames for both training and evaluation. There's also some shell scripts for filtering out mismatches and sorting the text files.
+
+
+metric_depth/zoedepth/utils/config.py is where you need to set the paths for your train/test file lists if running any of the original zoedepth code.
+
 
 Primary work cited:
+
 (*note: not all files from this repo are included, only what is required for my application to work.*)
 
 <div align="center">

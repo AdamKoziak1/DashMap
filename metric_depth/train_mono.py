@@ -39,7 +39,6 @@ import os
 os.environ["PYOPENGL_PLATFORM"] = "egl"
 os.environ["WANDB_START_METHOD"] = "thread"
 
-
 def fix_random_seed(seed: int):
     import random
 
