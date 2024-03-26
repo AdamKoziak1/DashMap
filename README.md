@@ -14,7 +14,7 @@ metric_depth/train_test_inputs contains text files with relative paths for all i
 metric_depth/zoedepth/utils/config.py is where you need to set the paths for your train/test file lists if running any of the original zoedepth code.
 
 
-Primary work cited:
+## Primary work cited:
 
 (*note: not all files from this repo are included, only what is required for my application to work.*)
 

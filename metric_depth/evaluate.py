@@ -80,7 +80,6 @@ def evaluate(model, test_loader, config, round_vals=True, round_precision=3):
         focal = sample.get('focal', torch.Tensor(
             [715.0873]).cuda())  # This magic number (focal) is only used for evaluating BTS model
         pred = infer(model, image, dataset=sample['dataset'][0], focal=focal)
-
         # Save image, depth, pred for visualization
         #print(config)
         if "save_images" in config and config.save_images:

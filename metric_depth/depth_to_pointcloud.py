@@ -16,7 +16,8 @@ from zoedepth.models.builder import build_model
 from zoedepth.utils.config import get_config
 
 # Global settings
-FL = 715.0873
+#FL = 715.0873
+FL = 721.5377
 FY = 256 * 0.6
 FX = 256 * 0.6
 NYU_DATA = False
@@ -43,7 +44,7 @@ def process_images(model):
             elif isinstance(pred, (list, tuple)):
                 pred = pred[-1]
             pred = pred.squeeze().detach().cpu().numpy()
-
+            
             # Resize color image and depth to final size
             resized_color_image = color_image.resize((FINAL_WIDTH, FINAL_HEIGHT), Image.LANCZOS)
             resized_pred = Image.fromarray(pred).resize((FINAL_WIDTH, FINAL_HEIGHT), Image.NEAREST)
@@ -73,7 +74,7 @@ def main(model_name, pretrained_resource):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", type=str, default='zoedepth', help="Name of the model to test")
-    parser.add_argument("-p", "--pretrained_resource", type=str, default='local::./checkpoints/depth_anything_metric_depth_indoor.pt', help="Pretrained resource to use for fetching weights.")
+    parser.add_argument("-p", "--pretrained_resource", type=str, default='local::./checkpoints/depth_anything_metric_depth_outdoor.pt', help="Pretrained resource to use for fetching weights.")
 
     args = parser.parse_args()
     main(args.model, args.pretrained_resource)
